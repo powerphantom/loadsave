@@ -2,15 +2,37 @@
 #include "game.h"
 
 void Load(){
-  string file_name;
-  printw("Please enter the name of your file: ");
-  getstr(file_name);
+	printw("Please Enter Your First Name: ")
+	getstr(x); 
+	ifstream infile(x);
+	if (!infile) {
+		cerr<<"Could not open file" << endl;
+		return -1;
+	}
+	getline();
+	infile>>obj.GetName;
+	infile>>obj.GetSurName;
+	infile>>obj.GetAge;
+	infile>>obj.GetCountry;
+	infile>>obj.GetLevel;
+	infile>>obj.GetEnergy;
+	infile>>obj.GetSteps;
 }
-
-void Save(){
-  string file_name;
-  printw("Please enter what you want to call your file: ")
-  getstr(file_name);
+}
+void Save(Display obj){
+	string x= obj.GetName;
+	ofstream outfile(x);
+	if (!outfile) {
+		cerr<<"Could not open file" << endl;
+		return -1;
+	}
+	outfile<<obj.GetName;
+	outfile<<obj.GetSurName;
+	outfile<<obj.GetAge;
+	outfile<<obj.GetCountry;
+	outfile<<obj.GetLevel;
+	outfile<<obj.GetEnergy;
+	outfile<<obj.GetSteps;
 }
 
 void gameData(Display object){
